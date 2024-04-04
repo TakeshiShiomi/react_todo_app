@@ -39,7 +39,13 @@
         ]);
 
         const handleTodoDeleteClick = (id) => {
-          
+          if (!confirm('Are you sure you want to delete?')) {
+            return;
+          }
+          const newTodos = todos.filter((todo) => {
+            return todo.id !== id;
+          });
+          setTodos(newTodos);
         };
 
         const todoItems = todos.map(todo => {
