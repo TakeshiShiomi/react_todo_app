@@ -30,7 +30,7 @@
             <label>
               <input type="checkbox" checked={props.todo.isCompleted} onChange= {handleCheckboxChange} />
               <span>
-                {props.todo.content}
+                {props.todo.title}
               </span>
             </label>
             <button onClick={handleDeleteClick}>Del</button>
@@ -38,18 +38,28 @@
         );
       };
 
+      const AddForm = () => {
+        const [title, setTitle] = React.useState('')
+        return(
+          <form>
+            <input type="text" value={title} />
+            <button>Add</button>
+          </form>
+        );
+      };
+
       const App = () => {
         const [todos, setTodos] = React.useState([
-          { id: 1, content: 'aaa', isCompleted: false },
-          { id: 2, content: 'bbb', isCompleted: true },
-          { id: 3, content: 'ccc', isCompleted: false },
+          { id: 1, title: 'aaa', isCompleted: false },
+          { id: 2, title: 'bbb', isCompleted: true },
+          { id: 3, title: 'ccc', isCompleted: false },
         ]);
 
         const handleTodoCheckboxChange = (id) => {
           const newTodos = todos.map(todo => {
             return {
               id: todo.id,
-              content: todo.content,
+              title: todo.title,
               isCompleted: todo.id === id ? !todo.isCompleted : todo.isCompleted,
             };
             return todo;
@@ -86,10 +96,7 @@
             <ul id="todos">
               {todoItems}
             </ul>
-            <form id="add-form">
-              <input type="text" />
-              <button>Add</button>
-            </form>
+            <AddForm />
           </>
         );
       };
