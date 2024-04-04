@@ -41,6 +41,18 @@
           { id: 3, content: 'ccc', isCompleted: false },
         ]);
 
+        const handleTodoCheckboxChange = (id) => {
+          const newTodos = todos.map(todo => {
+            return {
+              id: todo.id,
+              title: todo.title,
+              isCompleted: todo.id === id ? !todo.isCompleted : todo.isCompleted,
+            };
+            return todo;
+          });
+          setTodos(newTodos);
+        };
+
         const handleTodoDeleteClick = (id) => {
           if (!confirm('Are you sure you want to delete?')) {
             return;
