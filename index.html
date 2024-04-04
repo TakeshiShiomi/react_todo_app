@@ -32,11 +32,15 @@
       };
 
       const App = () => {
-        const todos = [
+        const [todos, setTodos] = React.useState([
           { id: 1, content: 'aaa', isCompleted: false },
           { id: 2, content: 'bbb', isCompleted: true },
-          { id: 3, content: 'ccc', isCompleted: false }
-        ];
+          { id: 3, content: 'ccc', isCompleted: false },
+        ]);
+
+        const handleTodoDeleteClick = (id) => {
+          
+        };
 
         const todoItems = todos.map(todo => {
           return(
