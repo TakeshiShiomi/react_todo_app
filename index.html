@@ -18,6 +18,9 @@
     // React要素をルートDOMノードにレンダーするには、まずReactDOM.createRoot()にDOM要素を渡し、root.render()にReact要素を渡す
     {
       const Todo = (props) => {
+        const handleDeleteClick = () => {
+          props.onDeleteClick(props.todo.id);
+        };
         return(
           <li>
             <label>
@@ -26,7 +29,7 @@
                 {props.todo.content}
               </span>
             </label>
-            <button>Del</button>
+            <button onClick={handleDeleteClick}>Del</button>
           </li>
         );
       };
@@ -53,6 +56,7 @@
             <Todo
               key={todo.id}
               todo={todo}
+              onDeleteClick={handleTodoDeleteClick}
             />
           );
         });
